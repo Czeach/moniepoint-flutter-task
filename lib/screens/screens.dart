@@ -7,10 +7,10 @@ class Screens extends StatefulWidget {
   const Screens({super.key});
 
   @override
-  State<Screens> createState() => _Screens();
+  State<Screens> createState() => _ScreensState();
 }
 
-class _Screens extends State<Screens> {
+class _ScreensState extends State<Screens> {
   late PageController _controller;
   int _screenIndex = 2;
 

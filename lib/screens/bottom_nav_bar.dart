@@ -14,17 +14,17 @@ class BottomNavBar extends StatefulWidget {
   final void Function(int index) onScreenChanged;
 
   @override
-  State<StatefulWidget> createState() => _BottomNavBar();
+  State<StatefulWidget> createState() => _BottomNavBarState();
 }
 
-class _BottomNavBar extends State<BottomNavBar> {
+class _BottomNavBarState extends State<BottomNavBar> {
   bool _navBarAnimation = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await Future.delayed(const Duration(milliseconds: 100));
+      await Future.delayed(const Duration(milliseconds: 4800));
       setState(() {
         _navBarAnimation = true;
       });
@@ -35,7 +35,7 @@ class _BottomNavBar extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return AnimatedSlide(
         offset: _navBarAnimation ? Offset.zero : const Offset(0, 1),
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 500),
         child: SafeArea(
           child: Material(
             shape: const StadiumBorder(),

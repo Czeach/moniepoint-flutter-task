@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moniepoint_flutter_task/screens/home/widgets/sliding_button.dart';
 
 class ListingItem extends StatelessWidget {
   const ListingItem({
@@ -17,7 +18,7 @@ class ListingItem extends StatelessWidget {
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
-         Container(
+        Container(
           alignment: Alignment.bottomCenter,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(24)),
@@ -28,10 +29,9 @@ class ListingItem extends StatelessWidget {
           ),
         ),
         Container(
-          padding: const EdgeInsets.all(10),
-          alignment: Alignment.bottomLeft,
-          child: Container()
-        ),
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.bottomLeft,
+            child: SlidingButton(address: address, alignment: alignment)),
       ],
     );
   }

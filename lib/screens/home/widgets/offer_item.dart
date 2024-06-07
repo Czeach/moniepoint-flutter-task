@@ -35,14 +35,14 @@ class _OfferItemState extends State<OfferItem>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 1200),
     );
     _animateCount = StepTween(
       begin: 0,
       end: widget.count,
     ).animate(_animationController);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await Future.delayed(const Duration(milliseconds: 3600));
+      await Future.delayed(const Duration(milliseconds: 3000));
       setState(() {
         _animateSize = true;
       });

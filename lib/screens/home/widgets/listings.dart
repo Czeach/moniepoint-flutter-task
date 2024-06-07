@@ -10,17 +10,17 @@ class Listings extends StatefulWidget {
   });
 
   @override
-  State<Listings> createState() => _Listings();
+  State<Listings> createState() => _ListingsState();
 }
 
-class _Listings extends State<Listings> {
+class _ListingsState extends State<Listings> {
   bool _animateListings = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await Future.delayed(const Duration(milliseconds: 4000));
+      await Future.delayed(const Duration(milliseconds: 3500));
       setState(() {
         _animateListings = true;
       });
@@ -30,44 +30,42 @@ class _Listings extends State<Listings> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSlide(
-      offset: _animateListings ? Offset.zero : const Offset(0, 1),
-      duration: const Duration(milliseconds: 500),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-          color: colorScheme.onPrimary,
-        ),
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: StaggeredGrid.count(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  children: Constants.listings
-                      .map(
-                        (listing) => StaggeredGridTile.count(
-                          crossAxisCellCount: listing.mainAxis,
-                          mainAxisCellCount: listing.crossAxis,
-                          child: ListingItem(
-                            image: listing.image,
-                            address: listing.address,
-                            alignment: listing.mainAxis > listing.crossAxis
-                                ? Alignment.center
-                                : Alignment.centerLeft,
+        offset: _animateListings ? Offset.zero : const Offset(0, 1),
+        duration: const Duration(milliseconds: 500),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+            color: colorScheme.onPrimary,
+          ),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: StaggeredGrid.count(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    children: Constants.listings
+                        .map(
+                          (listing) => StaggeredGridTile.count(
+                            crossAxisCellCount: listing.mainAxis,
+                            mainAxisCellCount: listing.crossAxis,
+                            child: ListingItem(
+                              image: listing.image,
+                              address: listing.address,
+                              alignment: listing.mainAxis > listing.crossAxis
+                                  ? Alignment.center
+                                  : Alignment.centerLeft,
+                            ),
                           ),
-                        ),
-                      )
-                      .toList(),
+                        )
+                        .toList(),
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-      )
-    );
+            ],
+          ),
+        ));
   }
-
 }

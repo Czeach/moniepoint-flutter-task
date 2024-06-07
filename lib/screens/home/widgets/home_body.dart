@@ -6,10 +6,10 @@ class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
 
   @override
-  State<HomeBody> createState() => _HomeBody();
+  State<HomeBody> createState() => _HomeBodyState();
 }
 
-class _HomeBody extends State<HomeBody> {
+class _HomeBodyState extends State<HomeBody> {
   bool _animateLocation = false;
   bool _animateAvatar = false;
   bool _animateName = false;
@@ -38,7 +38,7 @@ class _HomeBody extends State<HomeBody> {
         setState(() {
           _animateLine1 = true;
         });
-        await Future.delayed(const Duration(milliseconds: 300));
+        await Future.delayed(const Duration(milliseconds: 200));
         setState(() {
           _animateLine2 = true;
         });
@@ -70,8 +70,8 @@ class _HomeBody extends State<HomeBody> {
                       ),
                       Text(
                         'Saint Petersburg',
-                        style:
-                            TextStyle(color: colorScheme.secondary, fontSize: 16),
+                        style: TextStyle(
+                            color: colorScheme.secondary, fontSize: 16),
                       ),
                     ],
                   )),
