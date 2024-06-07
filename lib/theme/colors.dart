@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+
+const ColorScheme colorScheme = ColorScheme(
+  brightness: Brightness.light, 
+  primary: Color(0xfffc9f12),
+  onPrimary: Color(0xffffffff), 
+  secondary: Color(0xffa5957d), 
+  onSecondary: Color(0xffffffff), 
+  tertiary: Color(0xffd97805),
+  error: Color(0xffe50a13), 
+  onError: Color(0xffffffff), 
+  surface: Color(0xff000000), 
+  onSurface: Color(0xffffffff),
+  shadow: Color(0xff2b2b2b),
+  scrim: Color(0xFFE9A135)
+);
