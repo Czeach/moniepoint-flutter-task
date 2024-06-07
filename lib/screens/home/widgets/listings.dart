@@ -21,9 +21,11 @@ class _ListingsState extends State<Listings> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await Future.delayed(const Duration(milliseconds: 3500));
-      setState(() {
-        _animateListings = true;
-      });
+      if (mounted) {
+        setState(() {
+          _animateListings = true;
+        });
+      }
     });
   }
 

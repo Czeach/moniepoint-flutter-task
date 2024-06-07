@@ -43,10 +43,12 @@ class _OfferItemState extends State<OfferItem>
     ).animate(_animationController);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await Future.delayed(const Duration(milliseconds: 3000));
-      setState(() {
-        _animateSize = true;
-      });
-      _animationController.forward();
+      if (mounted) {
+        setState(() {
+          _animateSize = true;
+        });
+        _animationController.forward();
+      }
     });
   }
 

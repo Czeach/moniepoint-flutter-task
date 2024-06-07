@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:moniepoint_flutter_task/theme/colors.dart';
 
 class SlidingButton extends StatefulWidget {
@@ -26,13 +25,17 @@ class _SlidingButtonState extends State<SlidingButton> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final delay = Random().nextInt(1000) + 3700;
       await Future.delayed(Duration(milliseconds: delay));
-      setState(() {
-        _animateButton = true;
-      });
+      if (mounted) {
+        setState(() {
+          _animateButton = true;
+        });
+      }
       await Future.delayed(const Duration(milliseconds: 400));
-      setState(() {
-        _animateAddress = true;
-      });
+      if (mounted) {
+        setState(() {
+          _animateAddress = true;
+        });
+      }
     });
   }
 
@@ -49,7 +52,7 @@ class _SlidingButtonState extends State<SlidingButton> {
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(30)),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+            filter: ImageFilter.blur(sigmaX: 28, sigmaY: 28),
             child: LayoutBuilder(builder: (context, constraints) {
               return Stack(
                 children: [
@@ -67,10 +70,13 @@ class _SlidingButtonState extends State<SlidingButton> {
                   AnimatedPositioned(
                     right: _animateButton ? 0 : constraints.maxWidth - 40,
                     duration: const Duration(milliseconds: 400),
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundColor: colorScheme.onPrimary,
-                      child: const Icon(Icons.arrow_right),
+                    child: Container(
+                      padding: const EdgeInsets.only(right: 1, top: 2),
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundColor: colorScheme.onPrimary,
+                        child: const Icon(Icons.arrow_right),
+                      ),
                     ),
                   )
                 ],

@@ -22,26 +22,36 @@ class _HomeBodyState extends State<HomeBody> {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await Future.delayed(const Duration(milliseconds: 300));
-      setState(() {
-        _animateAvatar = true;
-      });
+      if (mounted) {
+        setState(() {
+          _animateAvatar = true;
+        });
+      }
       await Future.delayed(const Duration(milliseconds: 600));
-      setState(() {
-        _animateLocation = true;
-      });
+      if (mounted) {
+        setState(() {
+          _animateLocation = true;
+        });
+      }
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
         await Future.delayed(const Duration(milliseconds: 800));
-        setState(() {
-          _animateName = true;
-        });
+        if (mounted) {
+          setState(() {
+            _animateName = true;
+          });
+        }
         await Future.delayed(const Duration(milliseconds: 1000));
-        setState(() {
-          _animateLine1 = true;
-        });
+        if (mounted) {
+          setState(() {
+            _animateLine1 = true;
+          });
+        }
         await Future.delayed(const Duration(milliseconds: 200));
-        setState(() {
-          _animateLine2 = true;
-        });
+        if (mounted) {
+          setState(() {
+            _animateLine2 = true;
+          });
+        }
       });
     });
   }
