@@ -75,7 +75,11 @@ class _SlidingButtonState extends State<SlidingButton> {
                       child: CircleAvatar(
                         radius: 18,
                         backgroundColor: colorScheme.onPrimary,
-                        child: const Icon(Icons.arrow_right),
+                        child: Icon(
+                          Icons.keyboard_arrow_right_sharp,
+                          color: colorScheme.surface,
+                          size: 16,
+                        ),
                       ),
                     ),
                   )

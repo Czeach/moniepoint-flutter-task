@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moniepoint_flutter_task/screens/bottom_nav_bar.dart';
 import 'package:moniepoint_flutter_task/screens/home/home_screen.dart';
-import 'package:moniepoint_flutter_task/screens/search_screen.dart';
+import 'package:moniepoint_flutter_task/screens/search/search_screen.dart';
 import 'package:moniepoint_flutter_task/util/constants.dart';
 
 class Screens extends StatefulWidget {
@@ -40,7 +40,7 @@ class _ScreensState extends State<Screens> {
               if (item.index == 2) {
                 return const HomeScreen();
               } else if (item.index == 0) {
-                return SearchScreen();
+                return const SearchScreen();
               } else {
                 return Center(child: Icon(item.icon));
               }
