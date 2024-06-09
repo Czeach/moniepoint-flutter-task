@@ -63,7 +63,7 @@ class _HomeBodyState extends State<HomeBody> {
       child: Column(
         children: [
           SafeArea(
-              child: Row(
+            child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               AnimatedOpacity(

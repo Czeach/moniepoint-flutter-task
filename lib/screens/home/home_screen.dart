@@ -18,12 +18,10 @@ class HomeScreen extends StatelessWidget {
       child: NestedScrollView(
           headerSliverBuilder: (BuildContext headerContext, bool boolean) {
             return [
-              SliverAppBar(
+              const SliverAppBar(
                 backgroundColor: Colors.transparent,
-                scrolledUnderElevation: 0,
-                pinned: true,
-                expandedHeight: MediaQuery.sizeOf(headerContext).height * 0.47,
-                flexibleSpace: const FlexibleSpaceBar(
+                expandedHeight: 420,
+                flexibleSpace: FlexibleSpaceBar(
                   background: HomeBody(),
                 ),
               )

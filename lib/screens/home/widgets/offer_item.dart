@@ -87,12 +87,14 @@ class _OfferItemState extends State<OfferItem>
               AnimatedBuilder(
                   animation: _animateCount,
                   builder: (context, child) {
-                    return Text(
-                      '${_animateCount.value}',
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: widget.textColor ?? colorScheme.onPrimary,
+                    return FittedBox(
+                      child: Text(
+                        '${_animateCount.value}',
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: widget.textColor ?? colorScheme.onPrimary,
+                        ),
                       ),
                     );
                   }),

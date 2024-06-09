@@ -34,79 +34,75 @@ class _SearchScreenState extends State<SearchScreen> {
     zoom: 16,
   );
 
-  final _markers = <Marker>[];
+  final Set<Marker> _markers = {};
 
   Future<void> _addMarkers() async {
     await Future.delayed(const Duration(milliseconds: 600));
-    _markers.addAll([
+    _markers.addAll({
       Marker(
         markerId: const MarkerId('marker_1'),
         position: const LatLng(6.607354, 3.282811),
-        icon:
-            await const AnimatedMarker(title: '10,3 mn P').toBitmapDescriptor(),
+        icon: await const CustomMarker(title: '10,3 mn P').toBitmapDescriptor(),
       ),
       Marker(
         markerId: const MarkerId('marker_2'),
         position: const LatLng(6.605701, 3.283308),
-        icon: await const AnimatedMarker(title: '11 mn P').toBitmapDescriptor(),
+        icon: await const CustomMarker(title: '11 mn P').toBitmapDescriptor(),
       ),
       Marker(
         markerId: const MarkerId('marker_3'),
         position: const LatLng(6.604992, 3.287754),
-        icon:
-            await const AnimatedMarker(title: '7,8 mn P').toBitmapDescriptor(),
+        icon: await const CustomMarker(title: '7,8 mn P').toBitmapDescriptor(),
       ),
       Marker(
         markerId: const MarkerId('marker_4'),
         position: const LatLng(6.602455, 3.287775),
-        icon:
-            await const AnimatedMarker(title: '8,5 mn P').toBitmapDescriptor(),
+        icon: await const CustomMarker(title: '8,5 mn P').toBitmapDescriptor(),
       ),
       Marker(
         markerId: const MarkerId('marker_5'),
         position: const LatLng(6.600324, 3.283097),
-        icon:
-            await const AnimatedMarker(title: '13,3 mn P').toBitmapDescriptor(),
+        icon: await const CustomMarker(title: '13,3 mn P').toBitmapDescriptor(),
       ),
       Marker(
         markerId: const MarkerId('marker_6'),
         position: const LatLng(6.597686, 3.286839),
-        icon:
-            await const AnimatedMarker(title: '6,95 mn P').toBitmapDescriptor(),
+        icon: await const CustomMarker(title: '6,95 mn P').toBitmapDescriptor(),
       )
-    ]);
+    });
   }
 
   @override
   void initState() {
     super.initState();
     _loadMapStyle();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await Future.delayed(const Duration(milliseconds: 1000));
-      if (mounted) {
-        setState(() {
-          _animateItems = true;
-        });
-      }
-    });
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await _addMarkers();
-      setState(() {});
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorScheme.shadow,
       body: Stack(
         children: [
           GoogleMap(
             initialCameraPosition: _initialCameraPosition,
             style: _mapStyle,
-            markers: _markers.toSet(),
+            markers: _markers,
             onMapCreated: (GoogleMapController controller) async {
               _mapController.complete(controller);
+              WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+                await Future.delayed(const Duration(milliseconds: 1000));
+                if (mounted) {
+                  setState(() {
+                    _animateItems = true;
+                  });
+                }
+              });
+              WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+                await _addMarkers();
+                if (mounted) {
+                  setState(() {});
+                }
+              });
             },
             myLocationButtonEnabled: false,
             zoomControlsEnabled: false,
